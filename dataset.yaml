@@ -1,0 +1,7 @@
+train: /content/yolo_data/images/train
+
+val: /content/yolo_data/images/val
+
+nc: 1
+
+names: ['LicensePlate']
