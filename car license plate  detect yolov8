@@ -1,0 +1,379 @@
+
+Install YOLOv8:
+
+# Pip install (recommended)
+
+!pip install ultralytics
+     
+Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/
+Requirement already satisfied: ultralytics in /usr/local/lib/python3.8/dist-packages (8.0.16)
+Requirement already satisfied: sentry-sdk in /usr/local/lib/python3.8/dist-packages (from ultralytics) (1.13.0)
+Requirement already satisfied: matplotlib>=3.2.2 in /usr/local/lib/python3.8/dist-packages (from ultralytics) (3.2.2)
+Requirement already satisfied: requests>=2.23.0 in /usr/local/lib/python3.8/dist-packages (from ultralytics) (2.25.1)
+Requirement already satisfied: torchvision>=0.8.1 in /usr/local/lib/python3.8/dist-packages (from ultralytics) (0.14.1+cu116)
+Requirement already satisfied: psutil in /usr/local/lib/python3.8/dist-packages (from ultralytics) (5.4.8)
+Requirement already satisfied: thop>=0.1.1 in /usr/local/lib/python3.8/dist-packages (from ultralytics) (0.1.1.post2209072238)
+Requirement already satisfied: opencv-python>=4.1.1 in /usr/local/lib/python3.8/dist-packages (from ultralytics) (4.6.0.66)
+Requirement already satisfied: PyYAML>=5.3.1 in /usr/local/lib/python3.8/dist-packages (from ultralytics) (6.0)
+Requirement already satisfied: ipython in /usr/local/lib/python3.8/dist-packages (from ultralytics) (7.9.0)
+Requirement already satisfied: pandas>=1.1.4 in /usr/local/lib/python3.8/dist-packages (from ultralytics) (1.3.5)
+Requirement already satisfied: scipy>=1.4.1 in /usr/local/lib/python3.8/dist-packages (from ultralytics) (1.7.3)
+Requirement already satisfied: GitPython>=3.1.24 in /usr/local/lib/python3.8/dist-packages (from ultralytics) (3.1.30)
+Requirement already satisfied: Pillow>=7.1.2 in /usr/local/lib/python3.8/dist-packages (from ultralytics) (7.1.2)
+Requirement already satisfied: torch>=1.7.0 in /usr/local/lib/python3.8/dist-packages (from ultralytics) (1.13.1+cu116)
+Requirement already satisfied: numpy>=1.18.5 in /usr/local/lib/python3.8/dist-packages (from ultralytics) (1.21.6)
+Requirement already satisfied: tqdm>=4.64.0 in /usr/local/lib/python3.8/dist-packages (from ultralytics) (4.64.1)
+Requirement already satisfied: tensorboard>=2.4.1 in /usr/local/lib/python3.8/dist-packages (from ultralytics) (2.9.1)
+Requirement already satisfied: seaborn>=0.11.0 in /usr/local/lib/python3.8/dist-packages (from ultralytics) (0.11.2)
+Requirement already satisfied: gitdb<5,>=4.0.1 in /usr/local/lib/python3.8/dist-packages (from GitPython>=3.1.24->ultralytics) (4.0.10)
+Requirement already satisfied: python-dateutil>=2.1 in /usr/local/lib/python3.8/dist-packages (from matplotlib>=3.2.2->ultralytics) (2.8.2)
+Requirement already satisfied: pyparsing!=2.0.4,!=2.1.2,!=2.1.6,>=2.0.1 in /usr/local/lib/python3.8/dist-packages (from matplotlib>=3.2.2->ultralytics) (3.0.9)
+Requirement already satisfied: cycler>=0.10 in /usr/local/lib/python3.8/dist-packages (from matplotlib>=3.2.2->ultralytics) (0.11.0)
+Requirement already satisfied: kiwisolver>=1.0.1 in /usr/local/lib/python3.8/dist-packages (from matplotlib>=3.2.2->ultralytics) (1.4.4)
+Requirement already satisfied: pytz>=2017.3 in /usr/local/lib/python3.8/dist-packages (from pandas>=1.1.4->ultralytics) (2022.7)
+Requirement already satisfied: urllib3<1.27,>=1.21.1 in /usr/local/lib/python3.8/dist-packages (from requests>=2.23.0->ultralytics) (1.26.14)
+Requirement already satisfied: certifi>=2017.4.17 in /usr/local/lib/python3.8/dist-packages (from requests>=2.23.0->ultralytics) (2022.12.7)
+Requirement already satisfied: chardet<5,>=3.0.2 in /usr/local/lib/python3.8/dist-packages (from requests>=2.23.0->ultralytics) (4.0.0)
+Requirement already satisfied: idna<3,>=2.5 in /usr/local/lib/python3.8/dist-packages (from requests>=2.23.0->ultralytics) (2.10)
+Requirement already satisfied: google-auth-oauthlib<0.5,>=0.4.1 in /usr/local/lib/python3.8/dist-packages (from tensorboard>=2.4.1->ultralytics) (0.4.6)
+Requirement already satisfied: markdown>=2.6.8 in /usr/local/lib/python3.8/dist-packages (from tensorboard>=2.4.1->ultralytics) (3.4.1)
+Requirement already satisfied: tensorboard-plugin-wit>=1.6.0 in /usr/local/lib/python3.8/dist-packages (from tensorboard>=2.4.1->ultralytics) (1.8.1)
+Requirement already satisfied: setuptools>=41.0.0 in /usr/local/lib/python3.8/dist-packages (from tensorboard>=2.4.1->ultralytics) (57.4.0)
+Requirement already satisfied: grpcio>=1.24.3 in /usr/local/lib/python3.8/dist-packages (from tensorboard>=2.4.1->ultralytics) (1.51.1)
+Requirement already satisfied: absl-py>=0.4 in /usr/local/lib/python3.8/dist-packages (from tensorboard>=2.4.1->ultralytics) (1.3.0)
+Requirement already satisfied: protobuf<3.20,>=3.9.2 in /usr/local/lib/python3.8/dist-packages (from tensorboard>=2.4.1->ultralytics) (3.19.6)
+Requirement already satisfied: werkzeug>=1.0.1 in /usr/local/lib/python3.8/dist-packages (from tensorboard>=2.4.1->ultralytics) (1.0.1)
+Requirement already satisfied: google-auth<3,>=1.6.3 in /usr/local/lib/python3.8/dist-packages (from tensorboard>=2.4.1->ultralytics) (2.16.0)
+Requirement already satisfied: tensorboard-data-server<0.7.0,>=0.6.0 in /usr/local/lib/python3.8/dist-packages (from tensorboard>=2.4.1->ultralytics) (0.6.1)
+Requirement already satisfied: wheel>=0.26 in /usr/local/lib/python3.8/dist-packages (from tensorboard>=2.4.1->ultralytics) (0.38.4)
+Requirement already satisfied: typing-extensions in /usr/local/lib/python3.8/dist-packages (from torch>=1.7.0->ultralytics) (4.4.0)
+Requirement already satisfied: pexpect in /usr/local/lib/python3.8/dist-packages (from ipython->ultralytics) (4.8.0)
+Requirement already satisfied: prompt-toolkit<2.1.0,>=2.0.0 in /usr/local/lib/python3.8/dist-packages (from ipython->ultralytics) (2.0.10)
+Requirement already satisfied: jedi>=0.10 in /usr/local/lib/python3.8/dist-packages (from ipython->ultralytics) (0.18.2)
+Requirement already satisfied: backcall in /usr/local/lib/python3.8/dist-packages (from ipython->ultralytics) (0.2.0)
+Requirement already satisfied: decorator in /usr/local/lib/python3.8/dist-packages (from ipython->ultralytics) (4.4.2)
+Requirement already satisfied: pickleshare in /usr/local/lib/python3.8/dist-packages (from ipython->ultralytics) (0.7.5)
+Requirement already satisfied: traitlets>=4.2 in /usr/local/lib/python3.8/dist-packages (from ipython->ultralytics) (5.7.1)
+Requirement already satisfied: pygments in /usr/local/lib/python3.8/dist-packages (from ipython->ultralytics) (2.6.1)
+Requirement already satisfied: smmap<6,>=3.0.1 in /usr/local/lib/python3.8/dist-packages (from gitdb<5,>=4.0.1->GitPython>=3.1.24->ultralytics) (5.0.0)
+Requirement already satisfied: rsa<5,>=3.1.4 in /usr/local/lib/python3.8/dist-packages (from google-auth<3,>=1.6.3->tensorboard>=2.4.1->ultralytics) (4.9)
+Requirement already satisfied: cachetools<6.0,>=2.0.0 in /usr/local/lib/python3.8/dist-packages (from google-auth<3,>=1.6.3->tensorboard>=2.4.1->ultralytics) (5.2.1)
+Requirement already satisfied: pyasn1-modules>=0.2.1 in /usr/local/lib/python3.8/dist-packages (from google-auth<3,>=1.6.3->tensorboard>=2.4.1->ultralytics) (0.2.8)
+Requirement already satisfied: six>=1.9.0 in /usr/local/lib/python3.8/dist-packages (from google-auth<3,>=1.6.3->tensorboard>=2.4.1->ultralytics) (1.15.0)
+Requirement already satisfied: requests-oauthlib>=0.7.0 in /usr/local/lib/python3.8/dist-packages (from google-auth-oauthlib<0.5,>=0.4.1->tensorboard>=2.4.1->ultralytics) (1.3.1)
+Requirement already satisfied: parso<0.9.0,>=0.8.0 in /usr/local/lib/python3.8/dist-packages (from jedi>=0.10->ipython->ultralytics) (0.8.3)
+Requirement already satisfied: importlib-metadata>=4.4 in /usr/local/lib/python3.8/dist-packages (from markdown>=2.6.8->tensorboard>=2.4.1->ultralytics) (6.0.0)
+Requirement already satisfied: wcwidth in /usr/local/lib/python3.8/dist-packages (from prompt-toolkit<2.1.0,>=2.0.0->ipython->ultralytics) (0.2.5)
+Requirement already satisfied: ptyprocess>=0.5 in /usr/local/lib/python3.8/dist-packages (from pexpect->ipython->ultralytics) (0.7.0)
+Requirement already satisfied: zipp>=0.5 in /usr/local/lib/python3.8/dist-packages (from importlib-metadata>=4.4->markdown>=2.6.8->tensorboard>=2.4.1->ultralytics) (3.11.0)
+Requirement already satisfied: pyasn1<0.5.0,>=0.4.6 in /usr/local/lib/python3.8/dist-packages (from pyasn1-modules>=0.2.1->google-auth<3,>=1.6.3->tensorboard>=2.4.1->ultralytics) (0.4.8)
+Requirement already satisfied: oauthlib>=3.0.0 in /usr/local/lib/python3.8/dist-packages (from requests-oauthlib>=0.7.0->google-auth-oauthlib<0.5,>=0.4.1->tensorboard>=2.4.1->ultralytics) (3.2.2)
+Creating train-val split
+
+## importing required libraries
+import os
+import shutil
+import random
+
+!pip install tqdm --upgrade
+from tqdm.notebook import tqdm
+     
+Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/
+Requirement already satisfied: tqdm in /usr/local/lib/python3.8/dist-packages (4.64.1)
+
+## connecting to the google drive
+
+from google.colab import drive
+drive.mount('/content/drive')
+
+     
+Drive already mounted at /content/drive; to attempt to forcibly remount, call drive.mount("/content/drive", force_remount=True).
+
+train_path_img = "./yolo_data/images/train/"
+train_path_label = "./yolo_data/labels/train/"
+val_path_img = "./yolo_data/images/val/"
+val_path_label = "./yolo_data/labels/val/"
+test_path = "./yolo_data/test"
+     
+
+'''
+Split the dataset into train and test and creates the train.txt and test.tx with
+the respective path of the images in each folder
+'''
+
+def train_test_split(path,neg_path=None, split = 0.2):
+    print("------ PROCESS STARTED -------")
+
+
+    files = list(set([name[:-4] for name in os.listdir(path)])) ## removing duplicate names i.e. counting only number of images
+    
+
+    print (f"--- This folder has a total number of {len(files)} images---")
+    random.seed(42)
+    random.shuffle(files)
+
+    test_size = int(len(files) * split)
+    train_size = len(files) - test_size
+
+    ## creating required directories
+
+    os.makedirs(train_path_img, exist_ok = True)
+    os.makedirs(train_path_label, exist_ok = True)
+    os.makedirs(val_path_img, exist_ok = True)
+    os.makedirs(val_path_label, exist_ok = True)
+
+    
+    ### ----------- copying images to train folder
+    for filex in tqdm(files[:train_size]):
+      if filex == 'classes':
+          continue
+      shutil.copy2(path + filex + '.jpg',f"{train_path_img}/" + filex + '.jpg' )
+      shutil.copy2(path + filex + '.txt', f"{train_path_label}/" + filex + '.txt')
+        
+    
+
+    print(f"------ Training data created with 80% split {len(files[:train_size])} images -------")
+    
+    if neg_path:
+        neg_images = list(set([name[:-4] for name in os.listdir(neg_path)])) ## removing duplicate names i.e. counting only number of images
+        for filex in tqdm(neg_images):
+            shutil.copy2(neg_path+filex+ ".jpg", f"{train_path_img}/" + filex + '.jpg')
+            
+        print(f"------ Total  {len(neg_images)} negative images added to the training data -------")
+    
+        print(f"------ TOTAL Training data created with {len(files[:train_size]) + len(neg_images)} images -------")
+    
+
+
+    ### copytin images to validation folder
+    for filex in tqdm(files[train_size:]):
+      if filex == 'classes':
+          continue
+      # print("running")
+      shutil.copy2(path + filex + '.jpg', f"{val_path_img}/" + filex + '.jpg' )
+      shutil.copy2(path + filex + '.txt', f"{val_path_label}/" + filex + '.txt')
+
+    print(f"------ Testing data created with a total of {len(files[train_size:])} images ----------")
+    
+    print("------ TASK COMPLETED -------")
+
+## spliting the data into train-test and creating train.txt and test.txt files
+# train_test_split('/content/drive/MyDrive/custom_notebooks/yolo_data/')
+
+### for label_tag
+train_test_split('/content/drive/MyDrive/yolov8/data/') ### without negative images
+# train_test_split('./data/','./negative_images/') ### if you want to feed negative images
+     
+------ PROCESS STARTED -------
+--- This folder has a total number of 123 images---
+  0%|          | 0/99 [00:00<?, ?it/s]
+------ Training data created with 80% split 99 images -------
+  0%|          | 0/24 [00:00<?, ?it/s]
+------ Testing data created with a total of 24 images ----------
+------ TASK COMPLETED -------
+
+
+     
+
+
+
+import ultralytics
+ultralytics.checks()
+     
+Ultralytics YOLOv8.0.16 🚀 Python-3.8.10 torch-1.13.1+cu116 CUDA:0 (Tesla T4, 15110MiB)
+Setup complete ✅ (2 CPUs, 12.7 GB RAM, 23.8/78.2 GB disk)
+Command Line Interface:
+image.png
+
+image.png
+
+image.png
+
+Training
+
+!yolo task=detect mode=train model=yolov8s.pt data=/content/drive/MyDrive/yolov8/dataset.yaml epochs=10 imgsz=640 batch=8 project=/content/drive/MyDrive/yolov8/training_results name=LicensePlate 
+     
+Downloading https://github.com/ultralytics/assets/releases/download/v0.0.0/yolov8s.pt to yolov8s.pt...
+100% 21.5M/21.5M [00:00<00:00, 142MB/s]
+
+Ultralytics YOLOv8.0.16 🚀 Python-3.8.10 torch-1.13.1+cu116 CUDA:0 (Tesla T4, 15110MiB)
+yolo/engine/trainer: task=detect, mode=train, model=yolov8s.pt, data=/content/drive/MyDrive/yolov8/dataset.yaml, epochs=10, patience=50, batch=8, imgsz=640, save=True, cache=False, device=, workers=8, project=/content/drive/MyDrive/yolov8/training_results, name=football, exist_ok=False, pretrained=False, optimizer=SGD, verbose=False, seed=0, deterministic=True, single_cls=False, image_weights=False, rect=False, cos_lr=False, close_mosaic=10, resume=False, overlap_mask=True, mask_ratio=4, dropout=0.0, val=True, save_json=False, save_hybrid=False, conf=None, iou=0.7, max_det=300, half=False, dnn=False, plots=True, source=None, show=False, save_txt=False, save_conf=False, save_crop=False, hide_labels=False, hide_conf=False, vid_stride=1, line_thickness=3, visualize=False, augment=False, agnostic_nms=False, retina_masks=False, classes=None, format=torchscript, keras=False, optimize=False, int8=False, dynamic=False, simplify=False, opset=17, workspace=4, nms=False, lr0=0.01, lrf=0.01, momentum=0.937, weight_decay=0.0005, warmup_epochs=3.0, warmup_momentum=0.8, warmup_bias_lr=0.1, box=7.5, cls=0.5, dfl=1.5, fl_gamma=0.0, label_smoothing=0.0, nbs=64, hsv_h=0.015, hsv_s=0.7, hsv_v=0.4, degrees=0.0, translate=0.1, scale=0.5, shear=0.0, perspective=0.0, flipud=0.0, fliplr=0.5, mosaic=1.0, mixup=0.0, copy_paste=0.0, cfg=None, v5loader=False, save_dir=/content/drive/MyDrive/yolov8/training_results/football
+Downloading https://ultralytics.com/assets/Arial.ttf to /root/.config/Ultralytics/Arial.ttf...
+100% 755k/755k [00:00<00:00, 79.8MB/s]
+Overriding model.yaml nc=80 with nc=2
+
+                   from  n    params  module                                       arguments                     
+  0                  -1  1       928  ultralytics.nn.modules.Conv                  [3, 32, 3, 2]                 
+  1                  -1  1     18560  ultralytics.nn.modules.Conv                  [32, 64, 3, 2]                
+  2                  -1  1     29056  ultralytics.nn.modules.C2f                   [64, 64, 1, True]             
+  3                  -1  1     73984  ultralytics.nn.modules.Conv                  [64, 128, 3, 2]               
+  4                  -1  2    197632  ultralytics.nn.modules.C2f                   [128, 128, 2, True]           
+  5                  -1  1    295424  ultralytics.nn.modules.Conv                  [128, 256, 3, 2]              
+  6                  -1  2    788480  ultralytics.nn.modules.C2f                   [256, 256, 2, True]           
+  7                  -1  1   1180672  ultralytics.nn.modules.Conv                  [256, 512, 3, 2]              
+  8                  -1  1   1838080  ultralytics.nn.modules.C2f                   [512, 512, 1, True]           
+  9                  -1  1    656896  ultralytics.nn.modules.SPPF                  [512, 512, 5]                 
+ 10                  -1  1         0  torch.nn.modules.upsampling.Upsample         [None, 2, 'nearest']          
+ 11             [-1, 6]  1         0  ultralytics.nn.modules.Concat                [1]                           
+ 12                  -1  1    591360  ultralytics.nn.modules.C2f                   [768, 256, 1]                 
+ 13                  -1  1         0  torch.nn.modules.upsampling.Upsample         [None, 2, 'nearest']          
+ 14             [-1, 4]  1         0  ultralytics.nn.modules.Concat                [1]                           
+ 15                  -1  1    148224  ultralytics.nn.modules.C2f                   [384, 128, 1]                 
+ 16                  -1  1    147712  ultralytics.nn.modules.Conv                  [128, 128, 3, 2]              
+ 17            [-1, 12]  1         0  ultralytics.nn.modules.Concat                [1]                           
+ 18                  -1  1    493056  ultralytics.nn.modules.C2f                   [384, 256, 1]                 
+ 19                  -1  1    590336  ultralytics.nn.modules.Conv                  [256, 256, 3, 2]              
+ 20             [-1, 9]  1         0  ultralytics.nn.modules.Concat                [1]                           
+ 21                  -1  1   1969152  ultralytics.nn.modules.C2f                   [768, 512, 1]                 
+ 22        [15, 18, 21]  1   2116822  ultralytics.nn.modules.Detect                [2, [128, 256, 512]]          
+Model summary: 225 layers, 11136374 parameters, 11136358 gradients, 28.6 GFLOPs
+
+Transferred 349/355 items from pretrained weights
+optimizer: SGD(lr=0.01) with parameter groups 57 weight(decay=0.0), 64 weight(decay=0.0005), 63 bias
+train: Scanning /content/yolo_data/labels/train... 99 images, 0 backgrounds, 0 corrupt: 100% 99/99 [00:00<00:00, 1927.48it/s]
+train: New cache created: /content/yolo_data/labels/train.cache
+albumentations: Blur(p=0.01, blur_limit=(3, 7)), MedianBlur(p=0.01, blur_limit=(3, 7)), ToGray(p=0.01), CLAHE(p=0.01, clip_limit=(1, 4.0), tile_grid_size=(8, 8))
+val: Scanning /content/yolo_data/labels/val... 24 images, 0 backgrounds, 0 corrupt: 100% 24/24 [00:00<00:00, 2474.70it/s]
+val: New cache created: /content/yolo_data/labels/val.cache
+Image sizes 640 train, 640 val
+Using 2 dataloader workers
+Logging results to /content/drive/MyDrive/yolov8/training_results/LicensePlate
+Starting training for 10 epochs...
+Closing dataloader mosaic
+albumentations: Blur(p=0.01, blur_limit=(3, 7)), MedianBlur(p=0.01, blur_limit=(3, 7)), ToGray(p=0.01), CLAHE(p=0.01, clip_limit=(1, 4.0), tile_grid_size=(8, 8))
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+       1/10      2.11G      1.659      2.179      1.264         17        640: 100% 13/13 [00:21<00:00,  1.62s/it]
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100% 2/2 [00:03<00:00,  1.96s/it]
+                   all         24        190      0.688      0.593      0.589      0.331
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+       2/10      2.72G      1.389      1.434      1.127          6        640: 100% 13/13 [00:10<00:00,  1.18it/s]
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100% 2/2 [00:02<00:00,  1.41s/it]
+                   all         24        190      0.942      0.626      0.661      0.429
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+       3/10      2.72G      1.264      1.076      1.036         26        640: 100% 13/13 [00:10<00:00,  1.20it/s]
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100% 2/2 [00:02<00:00,  1.39s/it]
+                   all         24        190      0.925       0.64      0.672      0.447
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+       4/10      2.72G      1.228     0.9498      1.036         18        640: 100% 13/13 [00:10<00:00,  1.21it/s]
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100% 2/2 [00:02<00:00,  1.38s/it]
+                   all         24        190      0.887      0.747      0.811      0.512
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+       5/10      2.72G      1.169     0.8475     0.9703         22        640: 100% 13/13 [00:10<00:00,  1.20it/s]
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100% 2/2 [00:02<00:00,  1.39s/it]
+                   all         24        190      0.902      0.839      0.856      0.554
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+       6/10      2.72G      1.176     0.7833     0.9874         25        640: 100% 13/13 [00:10<00:00,  1.18it/s]
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100% 2/2 [00:02<00:00,  1.40s/it]
+                   all         24        190      0.943      0.805      0.845      0.525
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+       7/10      2.72G      1.193     0.6543     0.9772         22        640: 100% 13/13 [00:10<00:00,  1.23it/s]
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100% 2/2 [00:02<00:00,  1.41s/it]
+                   all         24        190      0.988       0.85      0.884      0.575
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+       8/10      2.72G       1.09     0.6459     0.9562          6        640: 100% 13/13 [00:10<00:00,  1.22it/s]
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100% 2/2 [00:02<00:00,  1.40s/it]
+                   all         24        190      0.973      0.835      0.882      0.553
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+       9/10      2.72G      1.193      0.679     0.9815         19        640: 100% 13/13 [00:10<00:00,  1.27it/s]
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100% 2/2 [00:02<00:00,  1.39s/it]
+                   all         24        190      0.969      0.849      0.895      0.536
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+      10/10      2.72G      1.073     0.6211     0.9545          6        640: 100% 13/13 [00:10<00:00,  1.25it/s]
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100% 2/2 [00:03<00:00,  1.59s/it]
+                   all         24        190       0.99      0.839      0.869      0.568
+
+10 epochs completed in 0.044 hours.
+Optimizer stripped from /content/drive/MyDrive/yolov8/training_results/LicensePlate/weights/last.pt, 22.5MB
+Optimizer stripped from /content/drive/MyDrive/yolov8/training_results/LicensePlate/weights/best.pt, 22.5MB
+
+Validating /content/drive/MyDrive/yolov8/training_results/LicensePlate/weights/best.pt...
+
+!yolo task=detect mode=predict model=/content/drive/MyDrive/yolov8/training_results/LicensePlate/weights/best.pt conf=0.55 source=/content/drive/MyDrive/yolov8/test_images
+     
+
+
+!cp -r /content/runs/detect/predict /content/drive/MyDrive/yolov8/output
+     
+inferencing on video
+
+!yolo task=detect mode=predict model=/content/drive/MyDrive/yolov8/training_results/LicensePlate/weights/best.pt conf=0.77 source=/content/drive/MyDrive/yolov8/vid2
+     
+Ultralytics YOLOv8.0.16 🚀 Python-3.8.10 torch-1.13.1+cu116 CUDA:0 (Tesla T4, 15110MiB)
+Model summary (fused): 168 layers, 11126358 parameters, 0 gradients, 28.4 GFLOPs
+
+
+!cp -r /content/runs/detect/predict2 /content/drive/MyDrive/yolov8/output
+     
+
+# !yolo task=detect mode=predict model=/content/drive/MyDrive/yolov8/training_results/LicensePlate/weights/best.pt conf=0.5 source=/content/drive/MyDrive/yolov8/videos
+     
+
+# !cp -r /content/runs/detect/predict3 /content/drive/MyDrive/yolov8/output
+     
+Export the model -- In progress
+Export a YOLOv8 model to any supported format with the format argument, i.e. format=onnx.
+
+Format	format=...**bold text**	Model
+PyTorch	-	yolov8n.pt
+TorchScript	torchscript	yolov8n.torchscript
+ONNX	onnx	yolov8n.onnx
+OpenVINO	openvino	yolov8n_openvino_model/
+TensorRT	engine	yolov8n.engine
+CoreML	coreml	yolov8n.mlmodel
+TensorFlow SavedModel	saved_model	yolov8n_saved_model/
+TensorFlow GraphDef	pb	yolov8n.pb
+TensorFlow Lite	tflite	yolov8n.tflite
+TensorFlow Edge TPU	edgetpu	yolov8n_edgetpu.tflite
+TensorFlow.js	tfjs	yolov8n_web_model/
+PaddlePaddle	paddle	yolov8n_paddle_model/
+
+!yolo mode=export model=/content/drive/MyDrive/yolov8/training_results/LicensePlate/weights/best.pt format=onnx
+     
+{'task': 'detect', 'mode': 'export', 'model': '/content/drive/MyDrive/yolov8/training_results/LicensePlate/weights/best.pt', 'data': None, 'epochs': 100, 'patience': 50, 'batch': 16, 'imgsz': 640, 'save': True, 'cache': False, 'device': None, 'workers': 8, 'project': None, 'name': None, 'exist_ok': False, 'pretrained': False, 'optimizer': 'SGD', 'verbose': False, 'seed': 0, 'deterministic': True, 'single_cls': False, 'image_weights': False, 'rect': False, 'cos_lr': False, 'close_mosaic': 10, 'resume': False, 'overlap_mask': True, 'mask_ratio': 4, 'dropout': 0.0, 'val': True, 'save_json': False, 'save_hybrid': False, 'conf': None, 'iou': 0.7, 'max_det': 300, 'half': False, 'dnn': False, 'plots': True, 'source': None, 'show': False, 'save_txt': False, 'save_conf': False, 'save_crop': False, 'hide_labels': False, 'hide_conf': False, 'vid_stride': 1, 'line_thickness': 3, 'visualize': False, 'augment': False, 'agnostic_nms': False, 'retina_masks': False, 'format': 'onnx', 'keras': False, 'optimize': False, 'int8': False, 'dynamic': False, 'simplify': False, 'opset': 17, 'workspace': 4, 'nms': False, 'lr0': 0.01, 'lrf': 0.01, 'momentum': 0.937, 'weight_decay': 0.0005, 'warmup_epochs': 3.0, 'warmup_momentum': 0.8, 'warmup_bias_lr': 0.1, 'box': 7.5, 'cls': 0.5, 'dfl': 1.5, 'fl_gamma': 0.0, 'label_smoothing': 0.0, 'nbs': 64, 'hsv_h': 0.015, 'hsv_s': 0.7, 'hsv_v': 0.4, 'degrees': 0.0, 'translate': 0.1, 'scale': 0.5, 'shear': 0.0, 'perspective': 0.0, 'flipud': 0.0, 'fliplr': 0.5, 'mosaic': 1.0, 'mixup': 0.0, 'copy_paste': 0.0, 'cfg': None, 'hydra': {'output_subdir': None, 'run': {'dir': '.'}}, 'v5loader': False}
+Ultralytics YOLOv8.0.11 🚀 Python-3.8.10 torch-1.13.1+cu116 CPU
+Fusing... 
+Model summary: 168 layers, 11126358 parameters, 0 gradients, 28.4 GFLOPs
+
+PyTorch: starting from /content/drive/MyDrive/yolov8/training_results/LicensePlate/weights/best.pt with output shape (1, 6, 8400) (21.5 MB)
+requirements: YOLOv8 requirement "onnx>=1.12.0" not found, attempting AutoUpdate...
+ERROR: pip's dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.
+tensorflow 2.9.2 requires protobuf<3.20,>=3.9.2, but you have protobuf 3.20.3 which is incompatible.
+tensorboard 2.9.1 requires protobuf<3.20,>=3.9.2, but you have protobuf 3.20.3 which is incompatible.
+Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/
+Collecting onnx>=1.12.0
+  Downloading onnx-1.13.0-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (13.5 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 13.5/13.5 MB 94.6 MB/s eta 0:00:00
+Requirement already satisfied: numpy>=1.16.6 in /usr/local/lib/python3.8/dist-packages (from onnx>=1.12.0) (1.21.6)
+Collecting protobuf<4,>=3.20.2
+  Downloading protobuf-3.20.3-cp38-cp38-manylinux_2_5_x86_64.manylinux1_x86_64.whl (1.0 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.0/1.0 MB 66.7 MB/s eta 0:00:00
+Requirement already satisfied: typing-extensions>=3.6.2.1 in /usr/local/lib/python3.8/dist-packages (from onnx>=1.12.0) (4.4.0)
+Installing collected packages: protobuf, onnx
+  Attempting uninstall: protobuf
+    Found existing installation: protobuf 3.19.6
+    Uninstalling protobuf-3.19.6:
+      Successfully uninstalled protobuf-3.19.6
+Successfully installed onnx-1.13.0 protobuf-3.20.3
+
+requirements: 1 package updated per ['onnx>=1.12.0']
+requirements: ⚠️ Restart runtime or rerun command for updates to take effect
+
+
+ONNX: starting export with onnx 1.13.0...
+ONNX: export success ✅ 12.9s, saved as /content/drive/MyDrive/yolov8/training_results/LicensePlate/weights/best.onnx (42.6 MB)
+
+Export complete (14.1s)
+Results saved to /content/drive/MyDrive/yolov8/training_results/LicensePlate/weights
+Predict:         yolo task=detect mode=predict model=/content/drive/MyDrive/yolov8/training_results/LicensePlate/weights/best.onnx -WARNING ⚠️ not yet supported for YOLOv8 exported models
+Validate:        yolo task=detect mode=val model=/content/drive/MyDrive/yolov8/training_results/LicensePlate/weights/best.onnx -WARNING ⚠️ not yet supported for YOLOv8 exported models
+Visualize:       https://netron.app
